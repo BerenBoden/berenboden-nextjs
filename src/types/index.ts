@@ -10,10 +10,6 @@ export type Resource = {
   html: any;
 };
 
-export type ShowcaseProps = {
-  posts: Resource[];
-};
-
 export type Category = {
   id: number;
   name: string;
