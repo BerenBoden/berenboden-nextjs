@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Beren Boden - Full Stack Developer</title>
+        <title>Beren Boden - IT & Security</title>
         <meta
-          name="Full Stack Developer"
-          content="Beren Boden - Full Stack Developer"
+          name="IT & Security"
+          content="Beren Boden - IT & Security"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
