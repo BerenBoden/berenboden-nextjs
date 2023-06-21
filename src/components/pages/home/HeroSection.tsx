@@ -36,10 +36,13 @@ export default function HeroSection() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              IT & Security
+              Full Stack Developer &amp; Cloud Engineer
             </h1>
             <p className="mt-6 text-md text-gray-600">
-              I only know HTML and CSS
+              Full Stack Developer specializing in Next.js, React and Node.js,
+              proficient in both NoSQL and SQL databases. Expert in cloud
+              services and web app security, ensuring robust and scalable
+              solutions for your business needs.
             </p>
           </div>
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto lg:mt-0 mt-6">
