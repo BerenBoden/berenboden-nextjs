@@ -1,15 +1,21 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import Showcase from "./Showcase";
-import { posts } from "@/db/dummyData";
+import { Resources } from "@/types";
 
-export default function Home() {
+export default function Home({ data }: Resources) {
   return (
     <>
       <HeroSection />
-      <Showcase posts={posts} title={"Projects"} />
-      <Showcase posts={posts} title={"Certifications"} />
-      <Showcase posts={posts} title={"Articles"} />
+      <div className="my-12">
+        <Showcase data={data.projects.data} title={"projects"} />
+      </div>
+      <div className="my-12">
+        <Showcase data={data.certifications.data} title={"certifications"} />
+      </div>
+      <div className="my-12">
+        <Showcase data={data.articles.data} title={"articles"} />
+      </div>
     </>
   );
 }
