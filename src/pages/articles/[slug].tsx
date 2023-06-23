@@ -10,13 +10,9 @@ import { useRouter } from "next/router";
 
 export default function Slug(props: any) {
   const router = useRouter();
-
-  // If the page is in the fallback state, show a loading message
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  // If props.data or props.data.data is undefined, show an error message
   if (!props.data || !props.data.data) {
     return <div>Error: Data not found</div>;
   }
@@ -30,7 +26,7 @@ export default function Slug(props: any) {
   return (
     <>
       <div className="h-40" />
-      <div className="mx-auto max-w-7xl">{content}</div>
+      <div className="max-w-7xl mx-auto xl:px-0 px-8">{content}</div>
     </>
   );
 }
