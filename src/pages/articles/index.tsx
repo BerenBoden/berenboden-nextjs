@@ -8,7 +8,7 @@ export default function articles({ data }: { data: Resource[] }) {
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const res = await fetch(
-    "https://berenboden-strapi-production.up.railway.app/api/articles?populate[0]=cover"
+    "https://berenboden-strapi-production.up.railway.app/api/articles?populate[resource][populate][0]=cover"
   );
   const { data } = await res.json();
   return {

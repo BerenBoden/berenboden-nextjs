@@ -6,8 +6,20 @@ import remark2rehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehype2react from "rehype-react";
 import React from "react";
+import { useRouter } from "next/router";
 
-export default function slug(props: any) {
+export default function Slug(props: any) {
+  const router = useRouter();
+
+  // If the page is in the fallback state, show a loading message
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  // If props.data or props.data.data is undefined, show an error message
+  if (!props.data || !props.data.data) {
+    return <div>Error: Data not found</div>;
+  }
   const processor = unified()
     .use(remarkParse)
     .use(remark2rehype, { allowDangerousHtml: true })

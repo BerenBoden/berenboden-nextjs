@@ -11,6 +11,7 @@ export default function DisplayCard({
   title: string;
 }) {
   const date = new Date(data.attributes.createdAt);
+  console.log(data);
   return (
     <article
       key={data.id}

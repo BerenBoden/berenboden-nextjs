@@ -23,7 +23,7 @@ export const socialNavigation = [
     Icon: SiStackoverflow,
     href: "https://stackoverflow.com/users/12826492/berenboden",
   },
-  { name: "Dev.to", Icon: SiDevdotto, href: "" },
+  { name: "Dev.to", Icon: SiDevdotto, href: "https://dev.to/berenboden" },
   {
     name: "Youtube",
     Icon: IoLogoYoutube,

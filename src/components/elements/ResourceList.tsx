@@ -20,7 +20,7 @@ export default function ResourceList({
           {data.length >= 1 ? (
             <>
               {data.map((resource: Resource) => (
-                <DisplayCard data={resource} title={title} />
+                <DisplayCard key={resource.id} data={resource} title={title} />
               ))}
             </>
           ) : (
