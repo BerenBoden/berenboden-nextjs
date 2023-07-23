@@ -19,8 +19,8 @@ export default function ResourceList({
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {data.length >= 1 ? (
             <>
-              {data.map((resource: Resource) => (
-                <DisplayCard key={resource.id} data={resource} title={title} />
+              {data.map(({id, attributes}: Resource) => (
+                <DisplayCard key={id} data={attributes} title={title} />
               ))}
             </>
           ) : (

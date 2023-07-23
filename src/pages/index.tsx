@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Index from "@/components/pages/home";
 import { GetStaticPropsContext } from "next";
 import { Resources } from "@/types";
+import HeroSection from "@/components/pages/home/HeroSection";
+import Showcase from "@/components/pages/home/Showcase";
 
 export default function Home({ data }: Resources) {
   return (
@@ -12,7 +13,16 @@ export default function Home({ data }: Resources) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Index data={data} />
+      <HeroSection />
+      <div className="my-12">
+        <Showcase data={data.projects.data} title={"projects"} />
+      </div>
+      <div className="my-12">
+        <Showcase data={data.certifications.data} title={"certifications"} />
+      </div>
+      <div className="my-12">
+        <Showcase data={data.articles.data} title={"articles"} />
+      </div>
     </>
   );
 }

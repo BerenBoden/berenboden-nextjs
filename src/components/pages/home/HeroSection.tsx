@@ -39,10 +39,10 @@ export default function HeroSection() {
               Full Stack Developer
             </h1>
             <p className="mt-6 text-md text-gray-600">
-              Typesafe Full Stack Developer specializing in Next.js, React and
-              Node.js, proficient in NoSQL, SQL databases and ORMs. Competence
-              with cloud services and web app security, ensuring robust and
-              scalable solutions for your business needs.
+              Typesafe full stack JavaScript developer specializing in Next.js,
+              React.js and Node.js. Proficient in NoSQL, SQL databases and ORMs.
+              Competence with cloud services, web app security and networking,
+              ensuring robust and scalable solutions for your business needs.
             </p>
           </div>
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto lg:mt-0 mt-6">
