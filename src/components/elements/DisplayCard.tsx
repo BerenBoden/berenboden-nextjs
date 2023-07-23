@@ -28,7 +28,7 @@ export default function DisplayCard({
           />
         </div>
       </Link>
-      <div className="p-4">
+      <div className="p-4 w-full">
         <Link href={`/${title}/${data.slug}`}>
           <div className="max-w-xl">
             <h3 className="mb-2">{data.title}</h3>
@@ -44,6 +44,26 @@ export default function DisplayCard({
             </div>
           </div>
         </Link>
+        <div className="flex flex-col text-center">
+          <Link
+            href={`/${title}/${data.slug}`}
+            className="mt-2 border w-full py-2"
+          >
+            <span className="text-sm font-medium text-gray-900">Read more</span>
+          </Link>
+          {title === "projects" && (
+            <a
+              href={data.resource.external}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 border w-full py-2"
+            >
+              <span className="text-sm font-medium text-gray-900">
+                View Live
+              </span>
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

@@ -1,7 +1,4 @@
-import { extractLargestPhoto } from "@/lib/extractPhotos";
 import { Resource } from "@/types";
-import Link from "next/link";
-import Image from "next/image";
 import DisplayCard from "@/components/elements/DisplayCard";
 
 export default function Showcase({

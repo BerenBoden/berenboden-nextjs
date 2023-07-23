@@ -3,6 +3,7 @@ import { GetStaticPropsContext } from "next";
 import { Resources } from "@/types";
 import HeroSection from "@/components/pages/home/HeroSection";
 import Showcase from "@/components/pages/home/Showcase";
+import Contact from "@/components/elements/Contact";
 
 export default function Home({ data }: Resources) {
   return (
@@ -22,6 +23,9 @@ export default function Home({ data }: Resources) {
       </div>
       <div className="my-12">
         <Showcase data={data.articles.data} title={"articles"} />
+      </div>
+      <div className="my-12">
+        <Contact />
       </div>
     </>
   );

@@ -76,6 +76,7 @@ export type ResourceAttributes = {
     content: string;
     description: string;
     cover: Cover;
+    external: string;
   };
 };
 
