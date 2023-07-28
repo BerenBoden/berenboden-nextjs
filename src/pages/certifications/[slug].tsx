@@ -1,10 +1,7 @@
 import { Resource } from "@/types";
 import { GetStaticPropsContext } from "next";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remark2rehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
-import rehype2react from "rehype-react";
+import { remark } from "remark";
+import html from "remark-html";
 import React from "react";
 import { useRouter } from "next/router";
 
@@ -13,20 +10,17 @@ export default function Slug(props: any) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  if (!props.data || !props.data.data) {
+  if (!props.data) {
     return <div>Error: Data not found</div>;
   }
-  const processor = unified()
-    .use(remarkParse)
-    .use(remark2rehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehype2react, { createElement: React.createElement });
-  const markdownContent = props.data.data.attributes.resource.content;
-  const content = processor.processSync(markdownContent).result;
+
   return (
     <>
       <div className="h-40" />
-      <div className="max-w-7xl mx-auto xl:px-0 px-8">{content}</div>
+      <div
+        className="max-w-7xl mx-auto xl:px-0 px-8 markdown-body"
+        dangerouslySetInnerHTML={{ __html: props.data }}
+      ></div>
     </>
   );
 }
@@ -47,6 +41,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     `https://berenboden-strapi-production.up.railway.app/api/certifications/${context?.params?.slug}?populate=*`
   );
   const data = await res.json();
-
-  return { props: { data } };
+  const content = await remark()
+    .use(html)
+    .process(data.data.attributes.resource.content);
+  const contentHTML = content.toString();
+  return { props: { data: contentHTML } };
 }

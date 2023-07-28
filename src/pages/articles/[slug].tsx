@@ -1,42 +1,26 @@
 import { Resource } from "@/types";
 import { GetStaticPropsContext } from "next";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remark2rehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
-import remarkBreaks from "remark-breaks";
-import rehype2react from "rehype-react";
-import rehypeStringify from "rehype-stringify";
 import React from "react";
 import { useRouter } from "next/router";
-// import 'github-markdown-css';
+import { remark } from "remark";
+import html from "remark-html";
 
 export default function Slug(props: any) {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  if (!props.data || !props.data.data) {
+  if (!props.data) {
     return <div>Error: Data not found</div>;
   }
-
-  const processor = unified()
-    .use(remarkParse)
-    .use(remarkBreaks)
-    .use(remark2rehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeStringify)
-    .use(rehype2react, { createElement: React.createElement });
-
-  const markdownContent = props.data.data.attributes.resource.content;
-  const content = processor.processSync(markdownContent).result;
 
   return (
     <>
       <div className="h-40" />
-      <div className="max-w-7xl mx-auto xl:px-0 px-8 markdown-body">
-        {content}
-      </div>
+      <div
+        className="max-w-7xl mx-auto xl:px-0 px-8 markdown-body"
+        dangerouslySetInnerHTML={{ __html: props.data }}
+      ></div>
     </>
   );
 }
@@ -57,6 +41,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     `https://berenboden-strapi-production.up.railway.app/api/articles/${context?.params?.slug}?populate=*`
   );
   const data = await res.json();
-
-  return { props: { data } };
+  const content = await remark()
+    .use(html)
+    .process(data.data.attributes.resource.content);
+  const contentHTML = content.toString();
+  return { props: { data: contentHTML } };
 }
