@@ -35,9 +35,9 @@ export default function HeroSection() {
         </svg>
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+            <h4 className="text-4xl font-bold tracking-tight text-gray-900">
               Full Stack Developer
-            </h1>
+            </h4>
             <p className="mt-6 text-md text-gray-600">
               Typesafe full stack JavaScript developer specializing in Next.js,
               React.js and Node.js. Proficient in NoSQL, SQL databases and ORMs.

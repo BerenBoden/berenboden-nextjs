@@ -12,9 +12,9 @@ export default function Showcase({
     <div className="bg-white ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="capitalize text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h4 className="capitalize text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {title}
-          </h2>
+          </h4>
         </div>
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-4 mt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {data.map(({ id, attributes }: Resource) => (

@@ -4,9 +4,12 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remark2rehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
+import remarkBreaks from "remark-breaks";
 import rehype2react from "rehype-react";
+import rehypeStringify from "rehype-stringify";
 import React from "react";
 import { useRouter } from "next/router";
+// import 'github-markdown-css';
 
 export default function Slug(props: any) {
   const router = useRouter();
@@ -16,17 +19,24 @@ export default function Slug(props: any) {
   if (!props.data || !props.data.data) {
     return <div>Error: Data not found</div>;
   }
+
   const processor = unified()
     .use(remarkParse)
+    .use(remarkBreaks)
     .use(remark2rehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(rehypeStringify)
     .use(rehype2react, { createElement: React.createElement });
+
   const markdownContent = props.data.data.attributes.resource.content;
   const content = processor.processSync(markdownContent).result;
+
   return (
     <>
       <div className="h-40" />
-      <div className="max-w-7xl mx-auto xl:px-0 px-8">{content}</div>
+      <div className="max-w-7xl mx-auto xl:px-0 px-8 markdown-body">
+        {content}
+      </div>
     </>
   );
 }
