@@ -75,7 +75,8 @@ export type ResourceAttributes = {
     id: number;
     content: string;
     description: string;
-    cover: Cover;
+    cover: string;
+    coverAltText: string;
     external: string;
   };
 };

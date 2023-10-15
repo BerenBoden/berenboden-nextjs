@@ -11,17 +11,13 @@ export default function DisplayCard({
   title: string;
 }) {
   const date = new Date(data.createdAt);
-  const alternativeText = extractLargestPhoto(
-    data.resource.cover
-  ).alternativeText;
-  const source = extractLargestPhoto(data.resource.cover).url;
   return (
     <article className="flex flex-col items-start justify-between border">
       <Link className="relative w-full" href={`/${title}/${data.slug}`}>
         <div className="relative w-full">
           <Image
-            src={source}
-            alt={alternativeText}
+            src={data.resource.cover}
+            alt={data.resource.coverAltText}
             width={500}
             height={500}
             className="w-full h-64 object-cover border-b"
