@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import Layout from "@/components/layout";
 import type { AppProps } from "next/app";
 import Script from "next/script";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
               gtag('config', '${process.env.NEXT_PUBLIC_GA_TAG}');
           `}
       </Script>
+      <Analytics />
     </>
   );
 }
