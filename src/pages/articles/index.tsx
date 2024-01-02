@@ -1,19 +1,26 @@
-import ResourceList from "@/components/elements/ResourceList";
-import { Resource } from "@/types";
+import { Resource as ResourceType } from "@/types";
+import Resource from "@/components/elements/Resource";
 import { GetStaticPropsContext } from "next";
 
-export default function articles({ data }: { data: Resource[] }) {
-  return <ResourceList data={data} title={"articles"} />;
+export default function articles({ resources }: { resources: ResourceType[] }) {
+  console.log(resources);
+  return (
+    <>
+      {resources.map((resource) => (
+        <Resource key={resource.id} resource={resource} />
+      ))}
+    </>
+  );
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const res = await fetch(
-    "https://berenboden-strapi-production.up.railway.app/api/articles?populate[resource][populate][0]=cover"
+  const data = await fetch(
+    `${process.env.API_URL}/api/resources/featured/article`
   );
-  const { data } = await res.json();
+  const resources = await data.json();
   return {
     props: {
-      data,
+      resources,
     },
   };
 }
