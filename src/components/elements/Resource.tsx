@@ -4,7 +4,6 @@ import Link from "next/link";
 import pluralize from "pluralize";
 
 export default function Resource({ resource }: { resource: ResourceType }) {
-  console.log(resource);
   const date = new Date(resource.createdAt);
   return (
     <div className="w-full flex flex-col items-start justify-between border">
@@ -23,7 +22,7 @@ export default function Resource({ resource }: { resource: ResourceType }) {
         </div>
       </Link>
       <div className="p-4 w-full">
-        <Link href={`/${resource.resource}/${resource.slug}`}>
+        <Link href={`/${pluralize(resource.resource)}/${resource.slug}`}>
           <div className="max-w-xl">
             <h3 className="mb-2">{resource.title}</h3>
             <div className="flex items-center gap-x-4 text-xs">
@@ -40,7 +39,7 @@ export default function Resource({ resource }: { resource: ResourceType }) {
         </Link>
         <div className="flex flex-col text-center">
           <Link
-            href={`/${resource.resource}/${resource.slug}`}
+            href={`/${pluralize(resource.resource)}/${resource.slug}`}
             className="mt-2 border w-full py-2"
           >
             <span className="text-sm font-medium text-gray-900">Read more</span>

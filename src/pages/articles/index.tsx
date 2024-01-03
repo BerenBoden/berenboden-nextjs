@@ -1,15 +1,26 @@
-import { Resource as ResourceType } from "@/types";
 import Resource from "@/components/elements/Resource";
+import { Resource as ResourceType } from "@/types";
 import { GetStaticPropsContext } from "next";
 
-export default function articles({ resources }: { resources: ResourceType[] }) {
-  console.log(resources);
+export default function certifications({
+  resources,
+}: {
+  resources: ResourceType[];
+}) {
   return (
-    <>
-      {resources.map((resource) => (
-        <Resource key={resource.id} resource={resource} />
-      ))}
-    </>
+    <div className="mx-auto max-w-7xl px-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 py-6">
+        {resources.map((resource) => {
+          return (
+            <div className="">
+              <div className="" key={resource.id}>
+                <Resource resource={resource} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

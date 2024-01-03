@@ -8,20 +8,19 @@ export default function certifications({
   resources: ResourceType[];
 }) {
   return (
-    <>
-      {resources.map((resource) => {
-        return (
-          <div className="mx-auto max-w-7xl px-6">
-            <div
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 py-6"
-              key={resource.id}
-            >
-              <Resource resource={resource} />
+    <div className="mx-auto max-w-7xl px-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 py-6">
+        {resources.map((resource) => {
+          return (
+            <div className="">
+              <div className="" key={resource.id}>
+                <Resource resource={resource} />
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
