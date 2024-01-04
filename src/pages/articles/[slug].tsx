@@ -1,25 +1,32 @@
-import { Resource } from "@/types";
+import { Resource as ResourceType } from "@/types";
 import { GetStaticPropsContext } from "next";
-import React from "react";
-import { useRouter } from "next/router";
 import { remark } from "remark";
+import html from "remark-html";
+import React from "react";
+import { organizeHeadings } from "@/utils/organizeHeadings";
+import { useRouter } from "next/router";
+import removeMd from "remove-markdown";
 import { Disclosure } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { classNames } from "../../utils/classNames";
-import html from "remark-html";
-import { organizeHeadings } from "../../utils/organizeHeadings";
-import removeMd from "remove-markdown";
 import Link from "next/link";
 
-export default function Slug(props: any) {
+export default function Slug({
+  contentHTML,
+  extractedMD,
+}: {
+  contentHTML: string;
+  extractedMD: string;
+}) {
   const router = useRouter();
+  const navigation = organizeHeadings(extractedMD);
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  if (!props.html) {
+  if (!contentHTML) {
     return <div>Error: Data not found</div>;
   }
-  const navigation = organizeHeadings(props.md);
+
   return (
     <>
       <div className="w-full flex overflow-x-hidden">
@@ -98,7 +105,7 @@ export default function Slug(props: any) {
         <div className="border-r border-gray-200" />
         <div
           className="w-1/2 pt-32 mx-auto xl:px-0 px-6 markdown-body"
-          dangerouslySetInnerHTML={{ __html: props.html }}
+          dangerouslySetInnerHTML={{ __html: contentHTML }}
         ></div>
       </div>
     </>
@@ -106,30 +113,31 @@ export default function Slug(props: any) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(
-    "https://berenboden-strapi-production.up.railway.app/api/articles"
-  );
-  const articles = await res.json();
-  const paths = articles.data.map((project: Resource) => ({
-    params: { slug: project.attributes.slug },
+  const data = await fetch(`${process.env.API_URL}/api/resources/type/article`);
+  const resources = await data.json();
+  const paths = resources.map((resource: ResourceType) => ({
+    params: { slug: resource.slug },
   }));
   return { paths, fallback: true };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const res = await fetch(
-    `https://berenboden-strapi-production.up.railway.app/api/articles/${context?.params?.slug}?populate=*`
-  );
-  const data = await res.json();
-  const content = await remark()
-    .use(html)
-    .process(data.data.attributes.resource.content);
+  debugger;
 
+  const data = await fetch(
+    `${process.env.API_URL}/api/resources/slug/${context?.params?.slug}`
+  );
+  const resource: ResourceType = await data.json();
+  const extractedMD = resource.content
+    .map((item) => {
+      if (item.children && item.children.length > 0 && item.children[0].text) {
+        return item.children[0].text + "\n";
+      }
+      return "\n"; // Return a newline for empty or non-text items
+    })
+    .join("");
+
+  const content = await remark().use(html).process(extractedMD);
   const contentHTML = content.toString();
-  return {
-    props: {
-      html: contentHTML,
-      md: data.data.attributes.resource.content,
-    },
-  };
+  return { props: { contentHTML, extractedMD } };
 }
