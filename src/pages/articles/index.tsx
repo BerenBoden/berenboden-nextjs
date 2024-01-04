@@ -18,10 +18,8 @@ export default function articles({
         ) : (
           docs.map((resource) => {
             return (
-              <div className="">
-                <div className="" key={resource.id}>
-                  <Resource resource={resource} />
-                </div>
+              <div className="" key={resource.id}>
+                <Resource resource={resource} />
               </div>
             );
           })
