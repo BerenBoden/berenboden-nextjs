@@ -19,7 +19,7 @@ export default function Home({ resources }: { resources: HomeResources }) {
       <HeroSection />
       <div className="mx-auto max-w-7xl px-6">
         {Object.entries(resources).map(([key, value]) => (
-          <>
+          <div key={key}>
             <div className="flex justify-between items-center">
               <h1 className="capitalize font-bold text-2xl">
                 {pluralize(key)}
@@ -35,10 +35,12 @@ export default function Home({ resources }: { resources: HomeResources }) {
               key={key}
             >
               {value.map((resource) => (
-                <Resource resource={resource} />
+                <div key={resource.id}>
+                  <Resource resource={resource} />
+                </div>
               ))}
             </div>
-          </>
+          </div>
         ))}
       </div>
       <div className="my-12">
