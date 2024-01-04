@@ -53,7 +53,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const resourceTypes = ["article", "certification", "project"];
   const fetchPromises = resourceTypes.map(async (resourceType) => {
     const response = await fetch(
-      `${process.env.API_URL}/api/resources/featured/${resourceType}`
+      `${process.env.API_URL}/api/resources/featured/${encodeURIComponent(
+        resourceType
+      )}`
     );
     const data = await response.json();
     return { [resourceType]: data };

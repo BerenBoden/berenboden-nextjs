@@ -1,5 +1,5 @@
 import { Resource as ResourceType } from "@/types";
-import { GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import { remark } from "remark";
 import html from "remark-html";
 import React from "react";
@@ -112,18 +112,7 @@ export default function Slug({
   );
 }
 
-export async function getStaticPaths() {
-  const data = await fetch(`${process.env.API_URL}/api/resources/type/article`);
-  const resources = await data.json();
-  const paths = resources.map((resource: ResourceType) => ({
-    params: { slug: resource.slug },
-  }));
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps(context: GetStaticPropsContext) {
-  debugger;
-
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const data = await fetch(
     `${process.env.API_URL}/api/resources/slug/${context?.params?.slug}`
   );

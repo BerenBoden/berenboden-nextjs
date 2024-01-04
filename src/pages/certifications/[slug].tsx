@@ -1,5 +1,6 @@
 import { Resource as ResourceType } from "@/types";
 import { GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import { remark } from "remark";
 import html from "remark-html";
 import React from "react";
@@ -112,24 +113,12 @@ export default function Slug({
   );
 }
 
-export async function getStaticPaths() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const data = await fetch(
-    `${process.env.API_URL}/api/resources/type/certification`
+    `${process.env.API_URL}/api/resources/slug/${context?.params?.slug}`
   );
-  const resources = await data.json();
-  const paths = resources.map((resource: ResourceType) => ({
-    params: { slug: resource.slug },
-  }));
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const data = await fetch(
-    `${process.env.API_URL}/api/resources/type/certification`
-  );
-  const resource: ResourceType[] = await data.json();
-  debugger;
-  const extractedMD = resource[0].content
+  const resource: ResourceType = await data.json();
+  const extractedMD = resource.content
     .map((item) => {
       if (item.children && item.children.length > 0 && item.children[0].text) {
         return item.children[0].text + "\n";
@@ -141,4 +130,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const content = await remark().use(html).process(extractedMD);
   const contentHTML = content.toString();
   return { props: { contentHTML, extractedMD } };
+
 }
