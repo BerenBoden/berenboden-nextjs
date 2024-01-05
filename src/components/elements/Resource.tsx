@@ -32,7 +32,7 @@ export default function Resource({ resource }: { resource: ResourceType }) {
             </div>
             <div className="group relative">
               <p className="mt-2 line-clamp-3 text-sm leading-6 text-gray-600">
-                {`...`}
+                {`${resource.shortDescription || "..."}`}
               </p>
             </div>
           </div>

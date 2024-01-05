@@ -33,7 +33,7 @@ export default function projects({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { page = 1, limit = 16 } = context.query; // Set default values
   const data = await fetch(
-    `${process.env.API_URL}/api/resources/type/projects?page=${page}&limit=${limit}`
+    `${process.env.API_URL}/api/resources/type/project?page=${page}&limit=${limit}`
   );
   const { docs, totalDocs } = await data.json();
   return {

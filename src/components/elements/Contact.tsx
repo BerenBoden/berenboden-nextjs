@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <div className="relative isolate bg-white mt-8 mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="relative isolate bg-white mt-8">
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
@@ -44,7 +44,7 @@ export default function Contact() {
                   htmlFor="first-name"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Name
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-2.5">
                   <input
@@ -73,12 +73,46 @@ export default function Contact() {
                   />
                 </div>
               </div>
+              <div>
+                <label
+                  htmlFor="last-name"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Phone
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    autoComplete="family-name"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="last-name"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Email
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    autoComplete="family-name"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
               <div className="sm:col-span-2">
                 <label
                   htmlFor="message"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <div className="mt-2.5">
                   <textarea
@@ -99,19 +133,12 @@ export default function Contact() {
                 Send message
               </button>
             </div>
-            <p className="mt-4 text-sm leading-6 text-gray-500">
-              By submitting this form, I agree to the{" "}
-              <a href="#" className="font-semibold text-indigo-600">
-                privacy&nbsp;policy
-              </a>
-              .
-            </p>
           </form>
-          <div className="lg:mt-6 lg:w-80 lg:flex-none">
+          <div className="lg:w-80 lg:flex-none">
             <Image src="/logo.png" alt="logo" height={200} width={200} />
             <figure className="mt-10">
-              <blockquote className="text-lg font-semibold leading-8 text-gray-900">
-                <p>I will get back to you within 24 hours.</p>
+              <blockquote className="text-sm font-semibold text-gray-900">
+                <p>Send an email to beren.boden@proton.me. I will get back to you within 24 hours. </p>
               </blockquote>
             </figure>
           </div>
