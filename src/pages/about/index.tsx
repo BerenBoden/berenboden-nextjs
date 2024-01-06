@@ -18,9 +18,9 @@ export default function about({
         resources linked to different categories that represent my specific
         skill sets.
       </p>
-      {convertedResources.map(({ category, resources }) => {
+      {convertedResources.map(({ category, resources }, index) => {
         return (
-          <>
+          <div key={index}>
             <hr />
             <div className="my-2 py-4">
               <h1 className="font-bold text-xl capitalize">
@@ -30,7 +30,7 @@ export default function about({
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 py-6">
                 {resources.map((resource) => {
                   return (
-                    <div className="border p-4 shadow-sm">
+                    <div key={resource.slug} className="border p-4 shadow-sm">
                       <h2 className="text-xs capitalize font-bold">
                         {resource.title}
                       </h2>
@@ -53,7 +53,7 @@ export default function about({
                 })}
               </div>
             </div>
-          </>
+          </div>
         );
       })}
       <Contact />
