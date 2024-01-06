@@ -150,6 +150,39 @@ type Category = {
   };
 };
 
+export type CategoryResource = {
+  category: string;
+  resources: Resource[];
+};
+
+export interface FullResource {
+  docs: Resource[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: null;
+  nextPage: null;
+}
+
+export interface CategoryMap {
+  [key: string]: {
+    category: string;
+    resources: {
+      title: string;
+      resource: string;
+      slug: string;
+      createdAt: string;
+      shortDescription: string;
+      cover: string;
+      coverAltText: string;
+    }[];
+  };
+}
+
 export interface Resource {
   id: string;
   title: string;
@@ -158,6 +191,7 @@ export interface Resource {
   featured: boolean;
   content: Content;
   category: Category[];
+  shortDescription: string;
   resource: string;
   externalLinks: any[]; // Replace 'any' with a more specific type if you know the structure of the external links
   slug: string;

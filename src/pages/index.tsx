@@ -42,9 +42,9 @@ export default function Home({ resources }: { resources: HomeResources }) {
             </div>
           </div>
         ))}
-      </div>
-      <div className="my-12">
-        <Contact />
+        <div className="my-12">
+          <Contact />
+        </div>
       </div>
     </>
   );

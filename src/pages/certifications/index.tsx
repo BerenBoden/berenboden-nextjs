@@ -33,7 +33,7 @@ export default function certifications({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { page = 1, limit = 16 } = context.query; // Set default values
   const data = await fetch(
-    `${process.env.API_URL}/api/resources/type/certifications?page=${page}&limit=${limit}`
+    `${process.env.API_URL}/api/resources/type/certification?page=${page}&limit=${limit}`
   );
   const { docs, totalDocs } = await data.json();
   return {
