@@ -31,7 +31,7 @@ export default function about({
                 {resources.map((resource) => {
                   return (
                     <div key={resource.slug} className="border p-4 shadow-sm">
-                      <h2 className="text-xs capitalize font-bold">
+                      <h2 className="text-xs font-bold">
                         {resource.title}
                       </h2>
                       <p>{resource.shortDescription}</p>
@@ -62,7 +62,7 @@ export default function about({
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const data = await fetch(`${process.env.API_URL}/api/resources/`);
+  const data = await fetch(`${process.env.API_URL}/api/resources?limit=100`);
   const resources = await data.json();
   function convertData(data: FullResource) {
     let categoryMap: CategoryMap = {};

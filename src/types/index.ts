@@ -193,7 +193,7 @@ export interface Resource {
   category: Category[];
   shortDescription: string;
   resource: string;
-  externalLinks: any[]; // Replace 'any' with a more specific type if you know the structure of the external links
+  links: [{ link: string; label: string }]; // Replace 'any' with a more specific type if you know the structure of the external links
   slug: string;
   createdAt: string; // or Date if you prefer to work with Date objects
   updatedAt: string; // or Date

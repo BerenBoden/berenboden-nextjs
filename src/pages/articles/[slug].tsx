@@ -103,8 +103,9 @@ export default function Slug({
           </nav>
         </div>
         <div className="border-r border-gray-200" />
+
         <div
-          className="w-1/2 pt-32 mx-auto xl:px-0 px-6 markdown-body"
+          className="w-1/2 pt-32 mx-auto xl:px-0 px-6 markdown-body overflow-x-auto"
           dangerouslySetInnerHTML={{ __html: contentHTML }}
         ></div>
       </div>

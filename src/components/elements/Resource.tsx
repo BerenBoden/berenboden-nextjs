@@ -45,6 +45,25 @@ export default function Resource({ resource }: { resource: ResourceType }) {
             <span className="text-sm font-medium text-gray-900">Read more</span>
           </Link>
         </div>
+        <div>
+          {resource?.links.length > 0 && (
+            <div className="flex flex-col text-center">
+              {resource?.links.map(({ link, label }) => (
+                <a
+                  key={label}
+                  href={link}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="mt-2 border w-full py-2"
+                >
+                  <span className="text-sm font-medium text-gray-900">
+                    {label}
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
