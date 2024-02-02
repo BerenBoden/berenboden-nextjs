@@ -26,7 +26,7 @@ export default function Home({ resources }: { resources: HomeResources }) {
               </h1>
               <Link href={`/${pluralize(key)}`}>
                 <p className="text-sm underline cursor-pointer text-blue-600">
-                  see more {key}s...
+                  more {key}s...
                 </p>
               </Link>
             </div>
