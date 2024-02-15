@@ -39,7 +39,7 @@ export default function HeroSection() {
               Electrical Engineering & Information Technology
             </h4>
             <p className="mt-6 text-md text-gray-600">
-              Studying E.E & I.T. Currently looking for an electrical apprenticeship or I.T position. Competence with cloud services, web app security, setting up and maintaining networks. Proficient with NoSQL, SQL and ORMs. Worked with; C, Python, JavaScript, Next.JS,
+              Electronics & I.T. Currently looking for an electrical apprenticeship or I.T position. Competence with cloud services, web app security, setting up and maintaining networks. Proficient with NoSQL, SQL and ORMs. Worked with; C, Python, JavaScript, Next.JS,
               React.JS, Node.JS. 
             </p>
           </div>
