@@ -39,8 +39,13 @@ export default function HeroSection() {
               Electrical Engineering & Information Technology
             </h4>
             <p className="mt-6 text-md text-gray-600">
-              Currently looking for work experience in Electronic Security. Competence with cloud services, web app security, setting up and maintaining networks. Proficient with NoSQL, SQL and ORMs. Worked with; C, Python, JavaScript, Next.JS,
-              React.JS, Node.JS. 
+              Security Technician for Advanced Security: Installation &
+              programming of Gallagher, ICT, Inner Range, Tecom, DSC, Bosch,
+              Axis, Avigilon. Network trouble shooting & data cable management.
+              Custom alarm panel & access panel integrations. Electronic door
+              lock installations. Configuring 24/7 security monitoring & remote
+              alerts. Automated gates, barriers & permimeter fencing. Alarm
+              troubleshooting and 24/7 call outs.
             </p>
           </div>
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto lg:mt-0 mt-6">
